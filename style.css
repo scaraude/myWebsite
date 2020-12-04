@@ -92,10 +92,7 @@ hr
 }
 
 /* ===== HOBBY ===== */
-#hobbies{
-}
-
-.hobby-holder{
+#hobby-holder{
     /* position: absolute; */
     overflow: hidden;
 }
@@ -108,7 +105,7 @@ hr
     position : absolute;
 }
 
-.pos-1{
+/* .pos-1{
  transform: translate(0);
 }
 
@@ -126,4 +123,4 @@ hr
 
 .pos-5{
     transform: translate(600%);
-}
+} */
