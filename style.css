@@ -1,0 +1,129 @@
+
+body{
+    background:rgba(255, 255, 255, 0.24);
+}
+
+#autophoto{
+    height : 160px;
+    width: 160px;
+    border-radius: 50%;
+}
+
+#emp-photo{
+    text-align: center;
+    vertical-align: middle;
+}
+
+.container-fluid{
+    padding: 5% 2% ;
+}
+
+.title{
+    text-decoration: underline;
+    font-weight: bold;
+    margin: 0% 0% 6% 6%;
+}
+
+hr
+{
+    border:0;
+    height: 2px;
+    background: radial-gradient(rgba(117,117,117,0.6), rgba(255,255,255,0) 80%);
+    margin : 0;
+    margin-bottom: 12px;
+}
+
+/* ========= TIMELINE ========= */
+.timeline .timeline-elem{
+    position: relative;
+}
+
+.timeline-elem{
+    border-left : solid 2px grey;
+    padding : 20px;
+    text-align : justify;
+}
+
+.timeline-elem:nth-of-type(1) {
+    border-top : 0;
+}
+
+.timeline-date{
+    position : absolute;
+    top: 0;
+    left: 0;
+    transform:translate(-50%, -50%);
+    font-size: 0.7em;
+    text-align: center;
+    color : white;
+    background : grey;
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+}
+
+@media (min-width : 768px){
+    .timeline-date{
+        left : 50%;
+    }
+    .timeline-elem{
+        border-top : solid 2px grey;
+    }
+
+    .timeline-elem:nth-of-type(2n) {
+        border-left : 0;
+        border-right : solid 2px grey;
+    }
+    
+    .timeline-elem:nth-of-type(2n+1)  {
+        border-left : solid 2px grey;
+    }
+}
+
+.text-date{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform:translate(-50%, -50%);
+}
+
+.timeline-title{
+    justify-content: space-between;
+}
+
+/* ===== HOBBY ===== */
+#hobbies{
+}
+
+.hobby-holder{
+    /* position: absolute; */
+    overflow: hidden;
+}
+
+.img-hobby{
+    width: 70px;
+    height: 70px;
+    border-radius : 50%;
+    transition : 1s ease;
+    position : absolute;
+}
+
+.pos-1{
+ transform: translate(0);
+}
+
+.pos-2{
+    transform: translate(150%);
+}
+
+.pos-3{
+    transform: translate(300%);
+}
+
+.pos-4{
+    transform: translate(450%);
+}
+
+.pos-5{
+    transform: translate(600%);
+}
