@@ -2,32 +2,38 @@ $(document).ready(() => {
 
     const initHobbyCss = () => {
         const img_hobby = $('.img-hobby');
-        const img_width = img_hobby.width();
-        window.container_hobby_width = $('#hobby-holder').width();
-        window.window_width = Math.round(window.container_hobby_width / img_hobby.length);
-        window.start_point = Math.round((window_width - img_width) / 2);
-        window.end_point = Math.round((window_width - img_width) / 2 + img_hobby.length * window_width);
+        const carousel_item_width = img_hobby.width();
+        const carousel_width = $('#hobby-holder').width();
+        window.carousel_nb_item = img_hobby.length;
+        const carousel_window_width = Math.round(carousel_width / carousel_nb_item);
 
+        window.carousel_target_point = [];
 
-        for (let i = 0; i < img_hobby.length; i++) {
-            let target_point = Math.round((window_width - img_width) / 2 + i * window_width);
-            $(img_hobby[i]).css('transform', 'translate(' + target_point + 'px)')
+        for (let i = 0; i < carousel_nb_item; i++) {
+            carousel_target_point[i] = Math.round((carousel_window_width - carousel_item_width) / 2 + i * carousel_window_width);
+            $(img_hobby[i]).css('transform', 'translate(' + carousel_target_point[i] + 'px)')
         }
     };
 
     const moveHobbyItems = (direction) => {
-        const $hobbies = $('.img-hobby');
+        const hobbies = $('.img-hobby');
 
-        $hobbies.each((index, item) => {
+        hobbies.each((index, item) => {
             $item = $(item);
-            let val_translate = Number($item.css('transform').split(',')[4]);
-            let new_val = (direction === 'left') ?
-                (val_translate - window.window_width) > 0 ? val_translate - window.window_width : 
-                window.end_point :
-                (val_translate + window.window_width) <  window.container_hobby_width ? val_translate + window.window_width : 
-                window.start_point;
-            
-            $item.css('transform', 'translate(' + new_val + 'px)')
+            let new_val, new_pos;
+            const re = RegExp('pos-[0-9]');
+            let pos = Number($item.attr('class').match(re)[0].split('-')[1]);
+            // let val_translate = Number($item.css('transform').split(',')[4]);
+
+            if (direction === 'left') {
+                new_pos = ((pos + 1) > (window.carousel_nb_item - 1)) ? 0 : (pos + 1);
+            } else {
+                new_pos = ((pos - 1) < 0) ? window.carousel_nb_item-1 : (pos - 1);
+            }
+
+            new_val = window.carousel_target_point[new_pos];
+            $item.addClass('pos-' + new_pos).removeClass('pos-' + pos);
+            $item.css('transform', 'translate(' + new_val + 'px)');
         })
     }
 
